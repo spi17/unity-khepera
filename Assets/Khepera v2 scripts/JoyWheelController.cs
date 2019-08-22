@@ -10,7 +10,7 @@ public class JoyWheelController : MonoBehaviour
 
     private float expectedRPMSpeed;
 
-    private static float RADIUS = 0.021f;
+    // private static float RADIUS = 0.021f;
 
     public void Start()
     {
@@ -19,11 +19,14 @@ public class JoyWheelController : MonoBehaviour
         expectedRPMSpeed = 0;
     }
 
-    public void ControlMotor(float expectedLinearSpeed)
+    public void ControlMotor(float expectedAngularSpeed)
     {
         //Debug.Log("Input: " + expectedLinearSpeed);
-        expectedRPMSpeed = (expectedLinearSpeed * 60) / (2 * RADIUS * Mathf.PI);
+        // expectedRPMSpeed = (expectedLinearSpeed * 60) / (2 * RADIUS * Mathf.PI);
         //Debug.Log("Expected: " + expectedRPMSpeed);
+
+        expectedRPMSpeed = (expectedAngularSpeed * 60) / (2 * Mathf.PI);
+        Debug.Log("Expected: " + expectedRPMSpeed);
     }
 
     public void FixedUpdate()
